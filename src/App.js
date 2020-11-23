@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import dotenv from 'dotenv';
 import { Grid } from '@material-ui/core';
 import  SearchBar  from './components/SearchBar';
 import  VideoList  from './components/VideoList';
 import  VideoDetail  from './components/VideoDetail';
 import axios from 'axios';
-
-dotenv.config();
+import { API_KEY } from './api/apiKey';
 
 const  App = () => {
   const [videos, setVideos] = useState([]);
@@ -17,15 +15,13 @@ const  App = () => {
       params: {
         part: 'snippet',
         maxResults: 30,
-        key: process.env.API_KEY,
+        key: API_KEY,
         q: searchTerm,
       }
     });
 
     setVideos(response.data.items);
     setSelectedVideo(response.data.items[0]);
-
-    console.log(response);
   }
 
   const onVideoSelect = (video) => {
