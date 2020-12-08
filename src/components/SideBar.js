@@ -12,13 +12,12 @@ import ThumbUpAltSharpIcon from '@material-ui/icons/ThumbUpAltSharp';
 
 const useStyles = makeStyles({
   root: {
-    width: 230,
     borderRadius: 0
   },
   menuItem: {
-      padding: '12px',
-      paddingLeft: '25px',
-      paddingRight: '50px' 
+    padding: '10px',
+    paddingLeft: '25px',
+    paddingRight: '50px' 
   }
 });
 
