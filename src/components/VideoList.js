@@ -24,7 +24,7 @@ const VideoList = () => {
         const { data } = await axios.get('https://www.googleapis.com/youtube/v3/search', {
             params: {
                 part: 'snippet',
-                maxResults: 30,
+                maxResults: 40,
                 key: API_KEY,
                 safeSearch: 'strict',
                 relevanceLanguage: 'en',

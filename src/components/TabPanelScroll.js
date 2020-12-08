@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: '50%',
-    backgroundColor: '#fafafa',
+    backgroundColor: '#f5f5f5',
   },
   appBar: {
     padding: '0px',
@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: '1px solid #ddd',
     boxShadow: '0px 0px 0px #fff',
     backgroundColor: '#fff',
+    marginBottom: '15px'
   }
 }));
 
