@@ -10,11 +10,11 @@ const useStyles = makeStyles((theme) => ({
       overflow: 'hidden',
       margin: theme.spacing(0, 2),
       display: 'flex',
-      flexWrap: 'wrap'
+      flexWrap: 'wrap',
     }
   }));
 
-const VideoList = () => {
+const VideoList = ({ searchInput }) => {
     const classes = useStyles();
 
     const [videos, setVideos] = useState([]);
@@ -29,7 +29,7 @@ const VideoList = () => {
                 safeSearch: 'strict',
                 relevanceLanguage: 'en',
                 regionCode: 'NG',
-                q: 'javascript',
+                q: searchInput || 'javascript',
             }
         });
 
@@ -39,7 +39,7 @@ const VideoList = () => {
     }
 
     useEffect(() => {
-        handleSubmit()
+        // handleSubmit();
     }, []);
 
     return (

@@ -1,22 +1,67 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { InputBase } from '@material-ui/core';
+import { fade, makeStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
 
-import { Paper, TextField } from '@material-ui/core';
+const useStyles = makeStyles((theme) => ({
+    search: {
+      position: 'relative',
+      borderRadius: theme.shape.borderRadius,
+      backgroundColor: fade(theme.palette.common.white, 0.15),
+      '&:hover': {
+        backgroundColor: fade(theme.palette.common.white, 0.25),
+      },
+      width: '100%',
+      [theme.breakpoints.up('md')]: {
+        marginLeft: theme.spacing(3),
+        width: 'auto',
+        display: 'flex'
+      },
+      border: '1px solid #ddd',
+      flexDirection: 'row-reverse',
+      display: 'none'
+    },
+    searchIcon: {
+      padding: theme.spacing(0, 3),
+      height: '100%',
+      position: 'absolute',
+      display: 'flex',
+      alignItems: 'center',
+      background: '#f2f2f2',
+      color: 'rgba(0, 0, 0, 0.44)',
+      borderLeft: '1px solid #ddd',
+      cursor: 'pointer'
+    },
+    inputRoot: {
+      color: 'inherit',
+    },
+    inputInput: {
+      paddingLeft: '16px',
+      transition: theme.transitions.create('width'),
+      width: '100%',
+      [theme.breakpoints.up('md')]: {
+        width: '550px',
+      },
+    },
+  }));
 
-const SearchBar = ({ onFormSubmit }) => {
-    const [searchTerm, setSearchTerm] = useState('');
+const SearchBar = ({ setSearchInput }) => {
+    const classes = useStyles();
+    const [input, setInput] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onFormSubmit(searchTerm);
+        setSearchInput(input);
+        setInput('');
     }
-
     return (
-        <Paper elevation={6} style={{ padding: '25px' }}>
-            <form onSubmit={handleSubmit}>
-                <TextField fullWidth label="Search..." onChange={e => setSearchTerm(e.target.value)} />
-            </form>
-        </Paper>
+        <form className={classes.search} onSubmit={handleSubmit}>
+            <InputBase value={input} placeholder="Search" classes={{ root: classes.inputRoot, input: classes.inputInput, }} inputProps={{ 'aria-label': 'search' }} onChange={e => setInput(e.target.value)} />
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+        </form>
     )
 }
 
-export default SearchBar
+export default SearchBar;

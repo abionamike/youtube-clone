@@ -19,12 +19,15 @@ import FeedbackIcon from '@material-ui/icons/Feedback';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    borderRadius: 0
+    borderRadius: 0,
+    height: '100vh',
+    overflow: 'scroll',
+    position: 'fixed'
   },
   menuItem: {
     padding: '8px',
     paddingLeft: '25px',
-    paddingRight: '50px' 
+    paddingRight: '30px' 
   },
   typography: {
     fontSize: '15px',
@@ -36,7 +39,11 @@ const useStyles = makeStyles((theme) => ({
   small: {
     width: theme.spacing(4),
     height: theme.spacing(4),
-    marginRight: '35px'
+    marginRight: '25px'
+  },
+  baseTypo: {
+    paddingLeft: '25px',
+    fontWeight: '600',
   }
 }));
 
@@ -171,6 +178,17 @@ const SideBar = () => {
           <Typography variant="body2"> Send Feedback </Typography>
         </MenuItem>
         <hr/>
+        <Typography className={classes.baseTypo} variant="body2" color="textSecondary">About Press Copyright</Typography>
+        <Typography className={classes.baseTypo} variant="body2" color="textSecondary">Contact us Creators</Typography>
+        <Typography className={classes.baseTypo} variant="body2" gutterBottom color="textSecondary">Advertise Developers</Typography>
+        <Typography className={classes.baseTypo} variant="body2" color="textSecondary">Terms Privacy Policy & Safety</Typography>
+        <Typography className={classes.baseTypo} variant="body2" color="textSecondary">How YouTube works</Typography>
+        <Typography className={classes.baseTypo} variant="body2" gutterBottom color="textSecondary">Test new features</Typography>
+        <br/>
+        <Typography variant="body2" gutterBottom color="textSecondary" style={{ paddingLeft: '25px' }}>&copy; 2020 Google LLC</Typography>
+        <br/>
+        <br/>
+        <br/>
       </MenuList>
     </Paper>
   );

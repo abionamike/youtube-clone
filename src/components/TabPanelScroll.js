@@ -9,6 +9,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     width: '50%',
     backgroundColor: '#f5f5f5',
+    marginLeft: '250px',
+    position: 'relative'
   },
   appBar: {
     padding: '0px',
@@ -16,11 +18,11 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: '1px solid #ddd',
     boxShadow: '0px 0px 0px #fff',
     backgroundColor: '#fff',
-    marginBottom: '15px'
+    marginBottom: '15px',
   }
 }));
 
-const TabPanelScroll = () =>{
+const TabPanelScroll = ({ searchInput }) =>{
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -35,7 +37,7 @@ const TabPanelScroll = () =>{
           <PanelScroll />
         </Tabs>
       </AppBar>
-      <VideoList />
+      <VideoList searchInput={searchInput} />
     </div>
   );
 }
