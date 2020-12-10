@@ -1,6 +1,7 @@
 import React from 'react';
 import { MenuList, MenuItem, Paper, ListItemIcon, Typography, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { deepOrange, deepPurple, green, red, blue, yellow } from '@material-ui/core/colors';
 import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
 import HomeIcon from '@material-ui/icons/Home';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
@@ -36,14 +37,51 @@ const useStyles = makeStyles((theme) => ({
     padding: '6px',
     textTransform: 'uppercase',
   },
-  small: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
-    marginRight: '25px'
-  },
   baseTypo: {
     paddingLeft: '25px',
     fontWeight: '600',
+  },
+  orange: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+    marginRight: '25px',
+    color: theme.palette.getContrastText(deepOrange[500]),
+    backgroundColor: deepOrange[500],
+  },
+  purple: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+    marginRight: '25px',
+    color: theme.palette.getContrastText(deepPurple[500]),
+    backgroundColor: deepPurple[500],
+  },
+  green: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+    marginRight: '25px',
+    color: theme.palette.getContrastText(green[900]),
+    backgroundColor: green[900],
+  },
+  blue: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+    marginRight: '25px',
+    color: theme.palette.getContrastText(blue[700]),
+    backgroundColor: blue[700],
+  },
+  red: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+    marginRight: '25px',
+    color: theme.palette.getContrastText(red[700]),
+    backgroundColor: red[700],
+  },
+  yellow: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+    marginRight: '25px',
+    color: theme.palette.getContrastText(yellow[800]),
+    backgroundColor: yellow[800],
   }
 }));
 
@@ -105,31 +143,31 @@ const SideBar = () => {
         <hr/>
         <Typography className={classes.typography} color="textSecondary" noWrap>Subscriptions</Typography>
         <MenuItem title="Liked videos" className={classes.menuItem}>
-          <Avatar className={classes.small}>TM</Avatar>
+          <Avatar className={classes.purple}>TM</Avatar>
           <Typography variant="body2" noWrap> Traversy Media </Typography>
         </MenuItem>
         <MenuItem title="Liked videos" className={classes.menuItem}>
-          <Avatar className={classes.small}>TNN</Avatar>
+          <Avatar className={classes.orange}>TNN</Avatar>
           <Typography variant="body2" noWrap> The Net Ninja </Typography>
         </MenuItem>
         <MenuItem title="Liked videos" className={classes.menuItem}>
-          <Avatar className={classes.small}>JM</Avatar>
+          <Avatar className={classes.green}>JM</Avatar>
           <Typography variant="body2" noWrap> JavaScript Mastery </Typography>
         </MenuItem>
         <MenuItem title="Liked videos" className={classes.menuItem}>
-          <Avatar className={classes.small}>CS</Avatar>
+          <Avatar className={classes.blue}>CS</Avatar>
           <Typography variant="body2" noWrap> Corey Schafer </Typography>
         </MenuItem>
         <MenuItem title="Liked videos" className={classes.menuItem}>
-          <Avatar className={classes.small}>DI</Avatar>
+          <Avatar className={classes.red}>DI</Avatar>
           <Typography variant="body2" noWrap> Dennis Ivy </Typography>
         </MenuItem>
         <MenuItem title="Liked videos" className={classes.menuItem}>
-          <Avatar className={classes.small}>DE</Avatar>
+          <Avatar className={classes.yellow}>DE</Avatar>
           <Typography variant="body2" noWrap> Dev Ed </Typography>
         </MenuItem>
         <MenuItem title="Liked videos" className={classes.menuItem}>
-          <Avatar className={classes.small}>TWT</Avatar>
+          <Avatar className={classes.orange}>TWT</Avatar>
           <Typography variant="body2" noWrap> Tech With Tim </Typography>
         </MenuItem>
         <hr/>
