@@ -1,21 +1,55 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import MainPage from './pages/MainPage';
-import SignInPage from './pages/SignInPage';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { useState, useEffect } from 'react';
+import { useGoogleLogin } from 'react-google-login';
+import { clientId } from './api/clientId';
+import NavBar from './components/NavBar';
+import SideBar from './components/SideBar';
+import TabPanelScroll from './components/TabPanelScroll';
 
-const  App = () => {
+const App = () => {
+  const [searchInput, setSearchInput] = useState(null);
+  const user = JSON.parse(localStorage.getItem('user'));
 
-  
+  const onSuccess = (res) => {
+    localStorage.setItem('user', JSON.stringify(res));
+  }
+
+  const onFailure = (res) => {
+      console.log(res)
+  }
+
+  const autoLoad = () => {
+      if(user){
+          return false;
+      }
+      return true
+  }
+
+  const { signIn } = useGoogleLogin({
+      clientId,
+      cookiePolicy: 'single_host_origin', 
+      isSignedIn: true, 
+      autoLoad,
+      onSuccess,
+      onFailure,
+  });
+
+  useEffect(() => {
+      signIn();
+      console.log(user);
+  }, [user]);
+
   return (
-    <Router>
-      <Route exact path="/">
-        <MainPage />
-      </Route>
-      <Route path="/signin">
-        <SignInPage /> 
-      </Route>
-    </Router>
-  );
+      <>
+          <NavBar setSearchInput={setSearchInput} />
+          <div style={{ display: 'flex', marginTop: '10vh' }}>
+              <SideBar />
+              <TabPanelScroll searchInput={searchInput} />
+          </div>   
+      </>
+  )
 }
 
 export default App;
+

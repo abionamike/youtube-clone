@@ -1,4 +1,7 @@
+/* eslint-disable no-restricted-globals */
 import React from 'react';
+import { useGoogleLogout } from 'react-google-login';
+import { clientId } from '../api/clientId';
 import { makeStyles } from '@material-ui/core/styles';
 import { Menu, MenuItem, Paper, ListItemIcon, Typography, Avatar, Grid, Link } from '@material-ui/core';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -35,20 +38,38 @@ const RenderMenu = ({ anchorEl, isMenuOpen, handleMenuClose }) => {
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem('user'));
 
+  const onLogoutSuccess = () => {
+    localStorage.removeItem('user');
+  }
+
+  const onFailure = () => {
+      alert('You have not been logout out');
+  }
+
+  const { signOut } = useGoogleLogout({
+      clientId,
+      onLogoutSuccess,
+      onFailure
+  });
+
   return (
     <Paper className={classes.root}>
       <Menu anchorEl={anchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'right' }} open={isMenuOpen} onClose={handleMenuClose}>
-        <div className={classes.profile}>
-            <ListItemIcon>
-                <Avatar src={user.profileObj.imageUrl} />
-            </ListItemIcon>
-            <Grid item>
-                <Typography className={classes.typography} variant="h5">{user.profileObj.name}</Typography>
-                <Typography className={classes.typography} gutterBottom variant="inherit">{user.profileObj.email}</Typography>
-                <Link href="#" style={{ textDecoration: "none" }} onClick={e => e.preventDefault()}>Manage Your Google account</Link>
-            </Grid>
-        </div>
-        <hr/>
+        {user && 
+          <>
+            <div className={classes.profile}>
+                <ListItemIcon>
+                    <Avatar src={user.profileObj.imageUrl} />
+                </ListItemIcon>
+                <Grid item>
+                    <Typography className={classes.typography} variant="h5">{user.profileObj.name}</Typography>
+                    <Typography className={classes.typography} gutterBottom variant="inherit">{user.profileObj.email}</Typography>
+                    <Link href="#" style={{ textDecoration: "none" }} onClick={e => e.preventDefault()}>Manage Your Google account</Link>
+                </Grid>
+            </div>
+            <hr/>
+          </>
+        }
         <MenuItem className={classes.menuItem}>
           <ListItemIcon>
             <AccountBoxIcon />
@@ -73,7 +94,7 @@ const RenderMenu = ({ anchorEl, isMenuOpen, handleMenuClose }) => {
           </ListItemIcon>
           <Typography variant="inherit" noWrap>Switch account</Typography>
         </MenuItem>
-        <MenuItem className={classes.menuItem}>
+        <MenuItem onClick={signOut()} className={classes.menuItem}>
           <ListItemIcon>
             <ExitToAppIcon />
           </ListItemIcon>

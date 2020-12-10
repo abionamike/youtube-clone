@@ -13,6 +13,7 @@ import LiveTvIcon from '@material-ui/icons/LiveTv';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 
+
 const useStyles = makeStyles((theme) => ({
     sectionDesktop: {
       display: 'none',
@@ -119,7 +120,7 @@ const DesktopIcons = ({ setAnchorEl }) => {
                     <NotificationsIcon />
                 </IconButton>
                 <IconButton edge="end" aria-label="account of current user" aria-haspopup="true" onClick={handleProfileMenuOpen}>
-                    <Avatar src={user.profileObj.imageUrl} className={classes.profile} />
+                    <Avatar src={user ? (user.profileObj.imageUrl) : null} className={classes.profile} />
                 </IconButton>
             </div>
             <div className={classes.sectionMobile}>
@@ -196,7 +197,7 @@ const DesktopIcons = ({ setAnchorEl }) => {
                     <NotificationsIcon />
                 </IconButton>
                 <IconButton edge="end" aria-label="account of current user" aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
-                    <Avatar src={user.profileObj.imageUrl} className={classes.profile} />
+                    <Avatar src={user ? (user.profileObj.imageUrl) : null} className={classes.profile} />
                 </IconButton>
             </div>
         </>
