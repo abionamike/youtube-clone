@@ -1,53 +1,56 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState, useEffect } from 'react';
-import { useGoogleLogin } from 'react-google-login';
-import { clientId } from './api/clientId';
+import React, { useState } from 'react';
+// import { useGoogleLogin } from 'react-google-login';
+// import { clientId } from './api/clientId';
 import NavBar from './components/NavBar';
 import SideBar from './components/SideBar';
 import TabPanelScroll from './components/TabPanelScroll';
 
 const App = () => {
   const [searchInput, setSearchInput] = useState(null);
-  const user = JSON.parse(localStorage.getItem('user'));
+  const [displaySidebar, setDisplaySidebar] = useState('block');
+  const [littleSidebar, setLittleSidebar] = useState('none');
 
-  const onSuccess = (res) => {
-    localStorage.setItem('user', JSON.stringify(res));
-  }
+//   const user = JSON.parse(localStorage.getItem('user'));
 
-  const onFailure = (res) => {
-      console.log(res)
-  }
+//   const onSuccess = (res) => {
+//     localStorage.setItem('user', JSON.stringify(res));
+//   }
 
-  const autoLoad = () => {
-      if(user){
-          return false;
-      }
-      return true
-  }
+//   const onFailure = (res) => {
+//     alert('failed to login!');
+//   }
 
-  const { signIn } = useGoogleLogin({
-      clientId,
-      cookiePolicy: 'single_host_origin', 
-      isSignedIn: true, 
-      autoLoad,
-      onSuccess,
-      onFailure,
-  });
+//   const autoLoad = () => {
+//       if(user){
+//           return false;
+//       }
+//       return true
+//   }
 
-  useEffect(() => {
-      signIn();
-      console.log(user);
-  }, [user]);
+//   const { signIn } = useGoogleLogin({
+//       process.env.clientId,
+//       cookiePolicy: 'single_host_origin', 
+//       isSignedIn: true, 
+//       autoLoad,
+//       onSuccess,
+//       onFailure,
+//   });
+
+//   useEffect(() => {
+//       signIn();
+//       console.log(user);
+//   }, []);
 
   return (
-      <>
-          <NavBar setSearchInput={setSearchInput} />
-          <div style={{ display: 'flex', marginTop: '10vh' }}>
-              <SideBar />
-              <TabPanelScroll searchInput={searchInput} />
-          </div>   
-      </>
+    <>
+        <NavBar setSearchInput={setSearchInput} displaySidebar ={displaySidebar} setDisplaySidebar ={setDisplaySidebar} littleSidebar ={littleSidebar} setLittleSidebar={setLittleSidebar} />
+        <div style={{ display: 'flex', marginTop: '10vh' }}>
+            <SideBar displaySidebar ={displaySidebar} setDisplaySidebar ={setDisplaySidebar} littleSidebar ={littleSidebar} setLittleSidebar={setLittleSidebar} />
+            <TabPanelScroll searchInput={searchInput} />
+        </div>   
+    </>
   )
 }
 

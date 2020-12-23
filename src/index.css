@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+span.PrivateTabIndicator-root-33.PrivateTabIndicator-colorSecondary-35.MuiTabs-indicator {
+  background-color: #fff;
+}
+
+span.PrivateTabIndicator-root-35.PrivateTabIndicator-colorSecondary-37.MuiTabs-indicator {
+  background-color: #fff;
+}
+
+.MuiSvgIcon-root {
+  color: #666
+}

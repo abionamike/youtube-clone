@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Tabs } from '@material-ui/core';
 import VideoList from './VideoList';
@@ -9,8 +9,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     width: '50%',
     backgroundColor: '#f5f5f5',
-    marginLeft: '250px',
-    position: 'relative'
+    position: 'relative',
   },
   appBar: {
     padding: '0px',
@@ -24,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 const TabPanelScroll = ({ searchInput }) =>{
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -33,7 +32,7 @@ const TabPanelScroll = ({ searchInput }) =>{
   return (
     <div className={classes.root}>
       <AppBar position="static" color="transparent" className={classes.appBar}>
-        <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="on" indicatorColor="transparent" textColor="primary" aria-label="scrollable force tabs example" style={{ padding: 0, marginLeft: 0 }}>
+        <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="on" textColor="primary" aria-label="scrollable force tabs example" >
           <PanelScroll />
         </Tabs>
       </AppBar>

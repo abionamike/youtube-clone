@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const DesktopIcons = ({ setAnchorEl }) => {
+const DesktopIcons = ({ setAnchorEl, handleSearchBar }) => {
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -124,12 +124,12 @@ const DesktopIcons = ({ setAnchorEl }) => {
                 </IconButton>
             </div>
             <div className={classes.sectionMobile}>
-                <IconButton>
+                <IconButton onClick={handleSearchBar}>
                     <SearchIcon />
                 </IconButton>
                 <PopupState variant="popover" popupId="demo-popup-menu">
                     {(popupState) => (
-                        <>
+                        <div>
                             <IconButton title="Create" {...bindTrigger(popupState)}>
                                 <VideoCallIcon />
                             </IconButton>
@@ -147,12 +147,12 @@ const DesktopIcons = ({ setAnchorEl }) => {
                                     <Typography variant="body2">Go Live</Typography>
                                 </MenuItem>
                             </Menu>
-                        </>
+                        </div>
                     )}
                 </PopupState>
                 <PopupState variant="popover" popupId="demo-popup-menu">
                     {(popupState) => (
-                        <>
+                        <div>
                             <IconButton title="YouTube apps" {...bindTrigger(popupState)}>
                                 <AppsIcon />
                             </IconButton>
@@ -190,7 +190,7 @@ const DesktopIcons = ({ setAnchorEl }) => {
                                     <Typography variant="body2">YouTube for Artists</Typography>
                                 </MenuItem>
                             </Menu>
-                        </>
+                        </div>
                     )}
                 </PopupState>
                 <IconButton title="Notifications">

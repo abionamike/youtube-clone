@@ -1,23 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'; 
 import axios from 'axios';
-import { API_KEY } from '../api/apiKey';
+// import { API_KEY } from '../api/apiKey';
 import VideoItem from './VideoItem';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-      overflow: 'hidden',
-      margin: theme.spacing(0, 2),
-      display: 'flex',
-      flexWrap: 'wrap',
-    }
-  }));
+import { Grid } from '@material-ui/core';
 
 const VideoList = ({ searchInput }) => {
-    const classes = useStyles();
-
     const [videos, setVideos] = useState([]);
     
     useEffect(() => {
@@ -28,11 +16,11 @@ const VideoList = ({ searchInput }) => {
                 params: {
                     part: 'snippet',
                     maxResults: 40,
-                    key: API_KEY,
+                    key: process.env.API_KEY,
                     safeSearch: 'strict',
                     relevanceLanguage: 'en',
                     regionCode: 'NG',
-                    q: searchInput || 'python',
+                    q: searchInput || 'Javascript',
                 }
             });
 
@@ -41,15 +29,15 @@ const VideoList = ({ searchInput }) => {
             setVideos(data.items);
         }
 
-        // handleSubmit();
+        handleSubmit();
     }, [searchInput]);
 
     return (
-        <div className={classes.root}>
+        <Grid container justify="center" alignItems="center">
             {videos.map(video => (
                 <VideoItem key={video.etag} video={video} />
            ))}
-        </div>
+        </Grid>
     );
 }
 

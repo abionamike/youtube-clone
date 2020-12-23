@@ -56,7 +56,7 @@ const RenderMenu = ({ anchorEl, isMenuOpen, handleMenuClose }) => {
     <Paper className={classes.root}>
       <Menu anchorEl={anchorEl} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'right' }} open={isMenuOpen} onClose={handleMenuClose}>
         {user && 
-          <>
+          <div>
             <div className={classes.profile}>
                 <ListItemIcon>
                     <Avatar src={user.profileObj.imageUrl} />
@@ -68,7 +68,7 @@ const RenderMenu = ({ anchorEl, isMenuOpen, handleMenuClose }) => {
                 </Grid>
             </div>
             <hr/>
-          </>
+          </div>
         }
         <MenuItem className={classes.menuItem}>
           <ListItemIcon>
