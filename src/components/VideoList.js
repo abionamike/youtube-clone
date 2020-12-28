@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'; 
 import axios from 'axios';
-// import { API_KEY } from '../api/apiKey';
 import VideoItem from './VideoItem';
 import { Grid } from '@material-ui/core';
 
@@ -16,7 +15,7 @@ const VideoList = ({ searchInput }) => {
                 params: {
                     part: 'snippet',
                     maxResults: 40,
-                    key: process.env.API_KEY,
+                    key: process.env.REACT_APP_API_KEY,
                     safeSearch: 'strict',
                     relevanceLanguage: 'en',
                     regionCode: 'NG',

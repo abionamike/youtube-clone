@@ -1,7 +1,6 @@
 /* eslint-disable no-restricted-globals */
 import React from 'react';
 import { useGoogleLogout } from 'react-google-login';
-import { clientId } from '../api/clientId';
 import { makeStyles } from '@material-ui/core/styles';
 import { Menu, MenuItem, Paper, ListItemIcon, Typography, Avatar, Grid, Link } from '@material-ui/core';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -47,7 +46,7 @@ const RenderMenu = ({ anchorEl, isMenuOpen, handleMenuClose }) => {
   }
 
   const { signOut } = useGoogleLogout({
-      clientId,
+      clientId: process.env.REACT_APP_CLIENT_ID,
       onLogoutSuccess,
       onFailure
   });
