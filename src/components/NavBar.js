@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, IconButton, Link } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchBar from './SearchBar';
-import SearchBarTwo from './SearchBarTwo';
 import DesktopIcons from './DesktopIcons';
 import RenderMenu from './RenderMenu';
 import YouTubeIcon from '@material-ui/icons/YouTube';
@@ -87,7 +86,7 @@ const NavBar = ({ setSearchInput, displaySidebar, setDisplaySidebar, littleSideb
               <Typography title="YouTube Home" className={classes.title} variant="h6" noWrap> YouTube<YouTubeIcon fontSize="inherit" style={{ color: '#f00' }} /> </Typography>
             </Link>
             <div className={classes.grow} />
-            <SearchBar setSearchInput={setSearchInput} />
+            <SearchBar setSearchInput={setSearchInput} type="main" />
             <div className={classes.grow} />
             <DesktopIcons setAnchorEl={setAnchorEl} handleSearchBar={handleSearchBar} />
           </Toolbar>
@@ -99,7 +98,7 @@ const NavBar = ({ setSearchInput, displaySidebar, setDisplaySidebar, littleSideb
           <IconButton className={classes.menuButton} color="inherit" onClick={toggleSearchBar}>
             <ArrowBackIcon />
           </IconButton>
-          <SearchBarTwo setSearchInput={setSearchInput} />
+          <SearchBar setSearchInput={setSearchInput} type="mini" />
         </Toolbar>
       </AppBar>
     </>

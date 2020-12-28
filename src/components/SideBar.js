@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+ /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { MenuList, MenuItem, ListItemIcon, Typography, Avatar, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
     overflow: 'scroll',
-    // position: 'fixed',
   },
   menuItem: {
     padding: '8px',
@@ -50,48 +49,11 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '25px',
     fontWeight: '600',
   },
-  orange: {
+  subscriptionAvatar: {
     width: theme.spacing(4),
     height: theme.spacing(4),
     marginRight: '25px',
-    color: theme.palette.getContrastText(deepOrange[500]),
-    backgroundColor: deepOrange[500],
   },
-  purple: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
-    marginRight: '25px',
-    color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500],
-  },
-  green: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
-    marginRight: '25px',
-    color: theme.palette.getContrastText(green[900]),
-    backgroundColor: green[900],
-  },
-  blue: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
-    marginRight: '25px',
-    color: theme.palette.getContrastText(blue[700]),
-    backgroundColor: blue[700],
-  },
-  red: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
-    marginRight: '25px',
-    color: theme.palette.getContrastText(red[700]),
-    backgroundColor: red[700],
-  },
-  yellow: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
-    marginRight: '25px',
-    color: theme.palette.getContrastText(yellow[800]),
-    backgroundColor: yellow[800],
-  }
 }));
 
 const SideBar = ({ displaySidebar, setDisplaySidebar, littleSidebar, setLittleSidebar }) => {
@@ -172,31 +134,31 @@ const SideBar = ({ displaySidebar, setDisplaySidebar, littleSidebar, setLittleSi
           <hr/>
           <Typography className={classes.typography} color="textSecondary" noWrap>Subscriptions</Typography>
           <MenuItem title="Liked videos" className={classes.menuItem}>
-            <Avatar className={classes.purple}>TM</Avatar>
+            <Avatar className={classes.subscriptionAvatar} style={{ backgroundColor: blue[700] }}>TM</Avatar>
             <Typography variant="body2" noWrap> Traversy Media </Typography>
           </MenuItem>
           <MenuItem title="Liked videos" className={classes.menuItem}>
-            <Avatar className={classes.orange}>TNN</Avatar>
+            <Avatar className={classes.subscriptionAvatar} style={{ backgroundColor: deepOrange[500] }}>TNN</Avatar>
             <Typography variant="body2" noWrap> The Net Ninja </Typography>
           </MenuItem>
           <MenuItem title="Liked videos" className={classes.menuItem}>
-            <Avatar className={classes.green}>JM</Avatar>
+            <Avatar className={classes.subscriptionAvatar} style={{ backgroundColor: deepPurple[500] }}>JM</Avatar>
             <Typography variant="body2" noWrap> JavaScript Mastery </Typography>
           </MenuItem>
           <MenuItem title="Liked videos" className={classes.menuItem}>
-            <Avatar className={classes.blue}>CS</Avatar>
+            <Avatar className={classes.subscriptionAvatar} style={{ backgroundColor: green[900] }}>CS</Avatar>
             <Typography variant="body2" noWrap> Corey Schafer </Typography>
           </MenuItem>
           <MenuItem title="Liked videos" className={classes.menuItem}>
-            <Avatar className={classes.red}>DI</Avatar>
+            <Avatar className={classes.subscriptionAvatar} style={{ backgroundColor: blue[700] }}>DI</Avatar>
             <Typography variant="body2" noWrap> Dennis Ivy </Typography>
           </MenuItem>
           <MenuItem title="Liked videos" className={classes.menuItem}>
-            <Avatar className={classes.yellow}>DE</Avatar>
+            <Avatar className={classes.subscriptionAvatar} style={{ backgroundColor: red[700] }}>DE</Avatar>
             <Typography variant="body2" noWrap> Dev Ed </Typography>
           </MenuItem>
           <MenuItem title="Liked videos" className={classes.menuItem}>
-            <Avatar className={classes.orange}>TWT</Avatar>
+            <Avatar className={classes.subscriptionAvatar}  style={{ backgroundColor: yellow[800] }}>TWT</Avatar>
             <Typography variant="body2" noWrap> Tech With Tim </Typography>
           </MenuItem>
           <hr/>
