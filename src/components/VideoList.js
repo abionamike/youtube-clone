@@ -8,9 +8,7 @@ const VideoList = ({ searchInput }) => {
     const [videos, setVideos] = useState([]);
     
     useEffect(() => {
-        const handleSubmit = async () => {
-            const user = JSON.parse(localStorage.getItem('user'));
-    
+        const handleSubmit = async () => {    
             const { data } = await axios.get('https://www.googleapis.com/youtube/v3/search', {
                 params: {
                     part: 'snippet',
@@ -22,9 +20,6 @@ const VideoList = ({ searchInput }) => {
                     q: searchInput || 'Javascript',
                 }
             });
-
-            console.log(user);
-            console.log(data.items);
             setVideos(data.items);
         }
 

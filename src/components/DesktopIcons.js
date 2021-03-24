@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useAuth0 } from "@auth0/auth0-react";
 import { IconButton, Avatar, Menu, MenuItem, ListItemIcon, Typography } from '@material-ui/core';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
@@ -36,12 +37,25 @@ const useStyles = makeStyles((theme) => ({
     icon: { color: '#f00' },
     menuItem: {
         padding: '8px'
+    },
+    button: {
+        outline: 'none',
+        border: '1px solid blue',
+        color: 'blue',
+        borderRadius: '5px',
+        paddingTop: '5px',
+        paddingBottom: '5px',
+        paddingRight: '12px',
+        paddingLeft: '12px',
+        fontSize: '15px',
+        cursor: 'pointer',
+        margin: 'auto'
     }
 }));
 
 const DesktopIcons = ({ setAnchorEl, handleSearchBar }) => {
     const classes = useStyles();
-    const user = JSON.parse(localStorage.getItem('user'));
+    const { loginWithRedirect, user, isAuthenticated } = useAuth0();
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -119,9 +133,12 @@ const DesktopIcons = ({ setAnchorEl, handleSearchBar }) => {
                 <IconButton title="Notifications">
                     <NotificationsIcon />
                 </IconButton>
-                <IconButton edge="end" aria-label="account of current user" aria-haspopup="true" onClick={handleProfileMenuOpen}>
-                    <Avatar src={user ? (user.profileObj.imageUrl) : null} className={classes.profile} />
-                </IconButton>
+                {isAuthenticated ? 
+                    <IconButton edge="end" aria-label="account of current , isAuthenticated" aria-haspopup="true" onClick={handleProfileMenuOpen}>
+                        <Avatar src={user.picture} className={classes.profile} />
+                    </IconButton> :
+                    <span onClick={() => loginWithRedirect()} className={classes.button}>Sign In</span>
+                }
             </div>
             <div className={classes.sectionMobile}>
                 <IconButton onClick={handleSearchBar}>
@@ -196,9 +213,13 @@ const DesktopIcons = ({ setAnchorEl, handleSearchBar }) => {
                 <IconButton title="Notifications">
                     <NotificationsIcon />
                 </IconButton>
-                <IconButton edge="end" aria-label="account of current user" aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
-                    <Avatar src={user ? (user.profileObj.imageUrl) : null} className={classes.profile} />
-                </IconButton>
+                {isAuthenticated ? (
+                    <IconButton edge="end" aria-label="account of current , isAuthenticated" aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
+                        <Avatar src={user.picture} className={classes.profile} />
+                    </IconButton>
+                ) : (
+                    <span onClick={() => loginWithRedirect()} className={classes.button}>Sign In</span>
+                )}
             </div>
         </>
     )
